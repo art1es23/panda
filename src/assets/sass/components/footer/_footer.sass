@@ -1,0 +1,41 @@
+.footer-container
+    display: flex
+    width: 100%
+    background-color: $navy
+    align-items: center
+    justify-content: center   
+.footer-navigation
+    display: flex
+    width: 100%
+    justify-content: center
+    align-items: center
+    gap: 1.5rem
+
+    &-button
+        text-decoration: none
+        display: flex
+        &.active
+            & button
+                background-color: $navy-light
+                color: $white
+                box-shadow: inset 1px 1px 2.5px 0 $black, inset -1px -1px 2.5px 0 white
+
+    & button
+        cursor: pointer
+        display: flex
+        align-items: center
+        justify-content: center
+        text-align: center
+        font-size: 1rem
+        color: $navy
+        background-color: $white
+        border: none
+        border-radius: 5px
+        padding: 0.5rem 1rem
+        text-decoration: none
+        min-width: 7.5rem
+        transition: all 0.25s ease-in
+        &:is(:hover, :active, :focus)
+            background-color: $navy-light
+            color: $white
+            box-shadow: inset 1px 1px 2.5px 0 $black, inset -1px -1px 2.5px 0 white

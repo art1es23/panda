@@ -1,0 +1,50 @@
+@import 'components/location-month-weather-graph'
+
+.location-container
+    display: flex
+    flex-direction: column
+    width: 100%
+    padding: 1.5rem
+    background-color: $navy
+    // height: 100%
+    color: $white
+
+.location
+    display: flex
+    flex-direction: column
+    width: 100%
+    gap: 2.5rem
+    // align-items: center
+    padding: 1rem 0
+    // align-items: center
+    &-info
+        display: flex
+        margin: 0 auto
+        flex-direction: column
+        gap: 0.5rem
+        width: 60%
+        align-items: center
+        padding: 1.5rem
+        border-radius: 20px
+        background: linear-gradient(to right, #141e30, #243b55)
+        box-shadow: inset 2.5px 2.5px 5px 0 $white, inset -2.5px -2.5px 5px 0 $black 
+
+        &__title
+            font-size: 1.5rem
+
+        &__status
+            font-size: 0.825rem
+
+        &__temperature
+            display: flex
+            gap: 1.25rem
+            font-size: 0.825rem
+.button-handler-counts
+    display: flex
+    background-color: transparent
+    border: none
+    margin: 0 auto
+    padding: 0.75rem 1rem
+    border-radius: 5px
+    color: $white
+    box-shadow: inset 1px 1px 2.5px 0 $white, inset -1px -1px 2.5px 0 $black 

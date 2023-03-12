@@ -1,0 +1,29 @@
+/** Swiper styles **/
+
+.swiper {
+  user-select: none;
+  box-sizing: border-box;
+  overflow: visible;
+  width: 320px;
+
+  height: 480px;
+
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+.swiper-slide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80%;
+  height: 100%;
+  color: #fff;
+  overflow: hidden;
+  position: relative;
+  box-sizing: border-box;
+
+  background-color: rgba(51, 51, 51, 1);
+
+  border-radius: 8px;
+}

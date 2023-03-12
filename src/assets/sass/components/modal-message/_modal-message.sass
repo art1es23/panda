@@ -1,0 +1,27 @@
+.warning-message
+    &-container
+        position: fixed
+        z-index: 99
+        inset: 0
+        display: flex
+        align-items: center
+        justify-content: center
+        background: linear-gradient(to right, rgb(75 108 183 / 80%), rgb(24 40 72 / 80%))
+    &-inner
+        width: 20rem
+        background-color: $navy-dark
+        color: $white
+        padding: 1.25rem 1.75rem
+        display: grid
+        justify-items: center
+        
+        & button
+            justify-self: flex-end
+            width: 1.5rem
+            height: 1.5rem
+            border: none
+            border-radius: 3px
+            background-color: $navy-white
+
+    &-text
+        padding: 1.25rem 0

@@ -1,0 +1,115 @@
+.list-stored-locations
+    display: flex
+    flex-direction: column
+    align-items: center
+    padding: 1.25rem 1.75rem
+    gap: 1.25rem
+    
+    // &.one
+    //     flex-direction: row
+
+    //     & .stored-location
+    //         &-wrapper
+    //             width: 80vw
+                
+
+    // &.more
+
+.stored-location
+    display: grid
+    grid-template-columns: repeat(2, 1fr)
+    gap: 0.5rem
+    padding: 1.25rem 2rem
+    height: 100%
+    width: 100%
+    justify-items: flex-start
+    text-decoration: none
+    position: relative
+    transition: box-shadow 0.25s ease-in
+    box-shadow: 2px 2px 5px 0 black, -2px -2px 5px 0 white
+    border-radius: 5px
+    &.location-day
+        background: linear-gradient(to right, #dad299, #b0dab9)
+        color: $navy
+        font-weight: normal
+    &.location-night
+        background: linear-gradient(to right, #141e30, #243b55)
+        color: $white
+
+
+    &-wrapper
+        width: 100%
+        box-shadow: 2px 2px 5px 0 black, -2px -2px 5px 0 white
+        border-radius: 5px
+        display: flex
+        position: relative
+        text-decoration: none
+
+        &-default-first
+            &:first-child
+            margin: 1.5rem 0 1rem
+            &::before
+                content: 'Current Location'
+                display: flex
+                align-items: center
+                justify-content: flex-start
+                text-align: left
+                font-size: 1.25rem
+                font-weight: 600
+                position: absolute
+                top: -1.75rem
+                left: 0
+                right: 0
+                color: $navy
+                // padding: 0.5rem 0
+            &::after
+                content: ''
+                position: absolute
+                display: block
+                background-color: $navy
+                height: 3px
+                left: 0
+                right: 0
+                bottom: -1rem
+                transform: translateY(100%)
+                border-radius: 5px
+
+        &.location-day
+            background: linear-gradient(to right, #dad299, #b0dab9)
+            color: $navy
+        &.location-night
+            background: linear-gradient(to right, #141e30, #243b55)
+            color: $white
+
+    // &:is(:hover, :active, :focus)
+    //     box-shadow: inset 2px 2px 5px 0 $black, inset -2px -2px 5px 0 white
+
+    &__title
+        font-weight: 600
+        font-size: 1rem
+
+    &__temp,
+    &__legend
+        justify-self: flex-end
+        text-align: right
+
+    &__temp
+        font-size: 1rem
+        font-weight: 600
+
+    &__weather,
+    &__legend
+        font-size: 0.875rem
+
+    &--edit
+        background-color: $navy-white
+
+    
+
+    // &.location-day
+    //     background: linear-gradient(to right, #dad299, #b0dab9)
+    //     color: $navy
+    //     font-weight: normal
+    // &.location-night
+    //     background: linear-gradient(to right, #141e30, #243b55)
+    //     color: $white
