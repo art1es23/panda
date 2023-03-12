@@ -5,9 +5,11 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
 export default {
   name: "TemperatureGraph",
+  props: {
+    forecastData: Array,
+  },
 
   data() {
     return {
@@ -19,10 +21,10 @@ export default {
   },
 
   computed: {
-    ...mapGetters(["GET_CURRENT_FORECAST_DATA"]),
+    // ...mapGetters(["GET_5_DAYS_FORECAST_DATA"]),
 
-    CURRENT_DAY_FORECAST() {
-      return this.GET_CURRENT_FORECAST_DATA?.slice(0, 8);
+    localForecastData() {
+      return this.forecastData;
     },
 
     DPI_WIDTH() {
@@ -42,6 +44,7 @@ export default {
 
   methods: {
     init(canvas, data = []) {
+      console.log("sss: ", data);
       const ctx = canvas.getContext("2d");
 
       canvas.style.width = this.WIDTH + "px";
@@ -52,54 +55,43 @@ export default {
       const COUNT_POINTS = data?.length;
 
       let TEMP_DATA = [];
-      [...data]?.map((obj) => {
-        TEMP_DATA.push(Math.round(obj.main.temp));
+
+      data?.map((obj) => {
+        TEMP_DATA.push(Math.round(obj.averageTemp));
       });
 
       const [Y_min, Y_max] = this.computeBoundaries(TEMP_DATA);
       const yRatio = this.VIEW_HEIGHT / (Y_max - Y_min);
       const xRatio = this.VIEW_WIDTH / COUNT_POINTS;
 
-      //   console.log("max: ", Y_min, Y_max);
-
       let coords = [];
       let xData = [];
       //   axis y
-
-      //   console.log(COUNT_POINTS, Y_min, Y_max);
       this.yAxis(ctx, COUNT_POINTS, Y_min, Y_max);
-      this.xAxis(ctx, xData, xRatio);
 
       // Paint Graph Lines
       data.forEach((obj, idx) => {
-        const {
-          dt,
-          main: { temp },
-        } = obj;
+        const { date, averageTemp } = obj;
 
-        // console.log("temp: ", Math.round(temp));
-
-        xData.push(dt);
+        xData.push(date);
         coords.push([
-          idx * xRatio,
-          //   Math.floor(idx * xRatio),
+          // idx * xRatio,
+          Math.floor(idx * xRatio),
           Math.round(
-            this.VIEW_HEIGHT - this.PADDING - Math.round(temp) * yRatio
+            this.DPI_HEIGHT - this.PADDING - Math.round(averageTemp) * yRatio
           ),
         ]);
-        // console.log(xData);
         this.paintLines(ctx, coords);
       });
+      this.xAxis(ctx, xData, xRatio);
     },
 
     xAxis(ctx, data, xRatio) {
       ctx.beginPath();
-      //   console.log(data);
-      for (let i = 1; i < data.length; i++) {
-        const text = this.dateBuilder(data[i - 1]);
+      for (let i = 0; i < data.length; i++) {
+        const text = this.dateBuilder(data[i]);
         const x = i * xRatio;
         ctx.fillText(text.toString(), x, this.DPI_HEIGHT - 10);
-        // console.log("tr");
       }
       ctx.closePath();
     },
@@ -108,14 +100,11 @@ export default {
       const step = this.VIEW_HEIGHT / count;
       const textStep = (Y_max - Y_min) / count;
 
-      //   console.log("///////// y axis");
-      //   console.log("step: ", textStep);
-
       ctx.beginPath();
       ctx.strokeStyle = "#bbb";
       ctx.font = "normal 30px Helvetica, sans-serif";
       ctx.fillStyle = "#96a2aa";
-      for (let i = 1; i <= count; i++) {
+      for (let i = 0; i <= count; i++) {
         const yPoint = step * i;
         // const text = Math.round(Y_max - textStep * i);
         const text = Y_max - textStep * i;
@@ -125,8 +114,6 @@ export default {
         ctx.lineTo(this.DPI_WIDTH, yPoint + this.PADDING);
       }
       ctx.stroke();
-
-      //   console.log("///////// y axis");
       ctx.closePath();
     },
 
@@ -173,28 +160,21 @@ export default {
         "Dec",
       ];
 
-      //   const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-
       const date = new Date(timestamp);
-      //   if (withDay) {
-      //     return `${days[date.getDay()]}, ${
-      //       months[date.getMonth()]
-      //     } ${date.getDate()}`;
-      //   }
       return `${months[date.getMonth()]} ${date.getDate()}`;
     },
   },
 
   mounted() {
-    this.init(document.querySelector("#graphTemp"), this.CURRENT_DAY_FORECAST);
+    console.log(this.localForecastData);
+    this.init(document.querySelector("#graphTemp"), this.localForecastData);
   },
 };
 </script>
 
 <style lang="sass" scoped>
 .temperature-graph-container
-
-    width: 60%
+    width: 90%
     display: flex
     height: 60vh
     margin: 0 auto

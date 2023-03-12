@@ -22,11 +22,7 @@ export default {
   },
 
   methods: {
-    ...mapActions([
-      "getLocation",
-      "changeStateAddContainer",
-      "GET_CURRENT_FORECAST_DATA",
-    ]),
+    ...mapActions(["getLocation", "changeStateAddContainer"]),
     chooseCity(city) {
       const payload = {
         isShowAddContainer: true,
@@ -37,8 +33,6 @@ export default {
       };
       this.changeStateAddContainer(payload);
       this.getLocation();
-      this.GET_CURRENT_FORECAST_DATA();
-      console.log("lll");
     },
   },
 };

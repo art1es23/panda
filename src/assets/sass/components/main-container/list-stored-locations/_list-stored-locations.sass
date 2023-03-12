@@ -1,23 +1,16 @@
 .list-stored-locations
-    display: flex
-    flex-direction: column
+    display: grid
+    // flex-direction: column
     align-items: center
     padding: 1.25rem 1.75rem
-    gap: 1.25rem
+    gap: 1.75rem
+    grid-template-columns: 1fr
     
-    // &.one
-    //     flex-direction: row
-
-    //     & .stored-location
-    //         &-wrapper
-    //             width: 80vw
-                
-
-    // &.more
 
 .stored-location
     display: grid
-    grid-template-columns: repeat(2, 1fr)
+    grid-template-columns: 1fr 15%
+    // grid-template-columns: 25% 1fr
     gap: 0.5rem
     padding: 1.25rem 2rem
     height: 100%
@@ -44,35 +37,33 @@
         display: flex
         position: relative
         text-decoration: none
+        // margin: 1.5rem 0 1rem
 
         &-default-first
             &:first-child
-            margin: 1.5rem 0 1rem
-            &::before
-                content: 'Current Location'
-                display: flex
-                align-items: center
-                justify-content: flex-start
-                text-align: left
-                font-size: 1.25rem
-                font-weight: 600
-                position: absolute
-                top: -1.75rem
-                left: 0
-                right: 0
-                color: $navy
-                // padding: 0.5rem 0
+            // margin: 1.5rem 0 1rem
+            // &::before
+            //     content: 'Current Location'
+            //     display: flex
+            //     align-items: center
+            //     justify-content: flex-start
+            //     text-align: left
+            //     font-size: 1.25rem
+            //     font-weight: 600
+            //     position: absolute
+            //     top: -1.75rem
+            //     left: 0
+            //     right: 0
+            //     color: $navy
             &::after
                 content: ''
                 position: absolute
                 display: block
-                background-color: $navy
-                height: 3px
-                left: 0
-                right: 0
-                bottom: -1rem
-                transform: translateY(100%)
+                background-color: transparent
+                border: 3px solid $white
                 border-radius: 5px
+                                
+                inset: 0
 
         &.location-day
             background: linear-gradient(to right, #dad299, #b0dab9)
@@ -81,12 +72,10 @@
             background: linear-gradient(to right, #141e30, #243b55)
             color: $white
 
-    // &:is(:hover, :active, :focus)
-    //     box-shadow: inset 2px 2px 5px 0 $black, inset -2px -2px 5px 0 white
-
     &__title
         font-weight: 600
-        font-size: 1rem
+        font-size: 1.1rem
+        text-align: left
 
     &__temp,
     &__legend
@@ -99,17 +88,16 @@
 
     &__weather,
     &__legend
+        display: flex
+        align-items: flex-end
         font-size: 0.875rem
 
     &--edit
         background-color: $navy-white
 
-    
-
-    // &.location-day
-    //     background: linear-gradient(to right, #dad299, #b0dab9)
-    //     color: $navy
-    //     font-weight: normal
-    // &.location-night
-    //     background: linear-gradient(to right, #141e30, #243b55)
-    //     color: $white
+@media screen and (min-width: 650px)
+    .list-stored-locations
+        grid-template-columns: repeat(2, 1fr)
+@media screen and (min-width: 1000px)
+    .list-stored-locations
+        grid-template-columns: repeat(3, 1fr)

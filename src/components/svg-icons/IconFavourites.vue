@@ -41,7 +41,7 @@ export default {
     checkIfExist() {
       let found = false;
       let favourites = JSON.parse(localStorage.getItem("favourites"));
-      if (favourites) {
+      if (favourites && this.currentData && this.currentData.name) {
         for (let i = 0; i < favourites.length; i++) {
           if (favourites[i].name === this.currentData.name) {
             found = true;

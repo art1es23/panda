@@ -20,12 +20,14 @@ export default {
   },
 
   unflat(state) {
-    if (!state.CURRENT_FORECAST_DATA.list) {
+    const forecastData = state.CURRENT_FORECAST_DATA;
+
+    if (!forecastData) {
       return [];
     }
 
     return Object.entries(
-      state.CURRENT_FORECAST_DATA.list.reduce((acc, obj) => {
+      forecastData.list.reduce((acc, obj) => {
         const key = obj.dt_txt.slice(0, 10);
         if (!acc[key]) {
           acc[key] = [];

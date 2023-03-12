@@ -8,10 +8,12 @@
           Please confirm that you want remove location
         </p>
 
-        <button class="button button-confirm" @click="confirmRemoving">
-          Confirm
-        </button>
-        <button class="button button-confirm" @click="close">Close</button>
+        <div class="button-wrapper">
+          <button class="button button-confirm" @click="confirmRemoving">
+            Confirm
+          </button>
+          <button class="button button-confirm" @click="close">Close</button>
+        </div>
       </div>
 
       <p class="warning-message-text" v-if="!isCanAddCount">

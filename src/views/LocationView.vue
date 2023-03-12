@@ -3,10 +3,10 @@
     class="location-view-container"
     :class="[!isDay ? 'location-day' : 'location-night']"
   >
-    <!-- <div class="preload" v-show="!CURRENT_WEATHER_DATA">
+    <!-- <div class="preload" v-show="!GET_LOCATION">
       <icon-preloader />
-    </div> -->
-    <!-- <location-container v-show="CURRENT_WEATHER_DATA" /> -->
+    </div>
+    <location-container v-show="GET_LOCATION" /> -->
     <location-container />
   </div>
 </template>
@@ -17,7 +17,7 @@ import LocationContainer from "@/components/location-container/LocationContainer
 export default {
   components: {
     LocationContainer,
-    //  IconPreloader
+    // IconPreloader,
   },
 
   data() {

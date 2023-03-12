@@ -6,7 +6,11 @@
       {{ isSingle ? "Forecast for Now" : "Forecast for 5 days" }}
     </h2>
 
-    <div class="location">
+    <div class="preload" v-show="!CURRENT_WEATHER_DATA">
+      <icon-preloader />
+    </div>
+
+    <div class="location" v-show="CURRENT_WEATHER_DATA">
       <location-info :currentLocationData="weatherData" v-if="isSingle" />
       <location-month-weather-graph
         :forecastData="forecastData"
@@ -18,7 +22,7 @@
       </button>
     </div>
 
-    <!-- <temperature-graph /> -->
+    <temperature-graph :forecastData="forecastData" />
 
     <warning-message v-if="isAddedToFavourites || isShowWarning" />
   </div>
@@ -26,8 +30,11 @@
 
 <script>
 import { mapGetters, mapState, mapActions } from "vuex";
+
+import IconPreloader from "../svg-icons/IconPreloader.vue";
+
 import ActionButtons from "../action-buttons/ActionButtons.vue";
-// import TemperatureGraph from "../temperature-graph/TemperatureGraph.vue";
+import TemperatureGraph from "../temperature-graph/TemperatureGraph.vue";
 import WarningMessage from "../warning-message/WarningMessage.vue";
 import LocationInfo from "./components/location-info/LocationInfo.vue";
 import LocationMonthWeatherGraph from "./components/location-month-weather/LocationMonthWeatherGraph.vue";
@@ -37,7 +44,8 @@ export default {
     LocationInfo,
     LocationMonthWeatherGraph,
     WarningMessage,
-    // TemperatureGraph,
+    IconPreloader,
+    TemperatureGraph,
   },
   name: "LocationContainer",
   data() {

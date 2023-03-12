@@ -39,10 +39,6 @@ export default {
       return JSON.parse(localStorage.getItem("favourites"));
     },
   },
-
-  mounted() {
-    console.log(this.favouritesData);
-  },
 };
 </script>
 

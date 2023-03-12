@@ -32,36 +32,40 @@ export default {
     const API_KEY = "bbfc439b3ebda2a738dfced8a4cccaa3";
     const BASE_URL = "https://api.openweathermap.org/data/2.5/";
 
-    await axios
-      .get(
-        `${BASE_URL}weather?q=${getters.GET_LOCATION}&appid=${API_KEY}&units=metric`
-      )
-      .then((res) => {
-        try {
-          commit("SET_CURRENT_WEATHER_DATA", res);
-        } catch (error) {
-          console.log(error);
-        }
-      })
-      .catch((err) => console.log(err));
+    if (getters.GET_LOCATION) {
+      await axios
+        .get(
+          `${BASE_URL}weather?q=${getters.GET_LOCATION}&appid=${API_KEY}&units=metric`
+        )
+        .then((res) => {
+          try {
+            commit("SET_CURRENT_WEATHER_DATA", res);
+          } catch (error) {
+            console.log(error);
+          }
+        })
+        .catch((err) => console.log(err));
+    }
   },
 
   GET_CURRENT_FORECAST_DATA: async ({ commit, getters }) => {
     const API_KEY = "bbfc439b3ebda2a738dfced8a4cccaa3";
     const BASE_URL = "https://api.openweathermap.org/data/2.5/";
 
-    await axios
-      .get(
-        `${BASE_URL}forecast?q=${getters.GET_LOCATION}&appid=${API_KEY}&units=metric`
-      )
-      .then((res) => {
-        try {
-          commit("SET_CURRENT_FORECAST_DATA", res);
-        } catch (error) {
-          console.log(error);
-        }
-      })
-      .catch((err) => console.log(err));
+    if (getters.GET_LOCATION) {
+      await axios
+        .get(
+          `${BASE_URL}forecast?q=${getters.GET_LOCATION}&appid=${API_KEY}&units=metric`
+        )
+        .then((res) => {
+          try {
+            commit("SET_CURRENT_FORECAST_DATA", res);
+          } catch (error) {
+            console.log(error);
+          }
+        })
+        .catch((err) => console.log(err));
+    }
   },
 
   handlerSetLocation: ({ commit }, payload) => {

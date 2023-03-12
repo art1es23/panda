@@ -3,36 +3,27 @@
 import cities from "@/data/cities";
 
 export default {
-  CURRENT_WEATHER_DATA: [],
   COUNTRY_NAMES_LIST: cities,
-
-  CURRENT_FORECAST_DATA: [],
-  // HOURLY_FORECAST_DATA: null,
+  CURRENT_WEATHER_DATA: null,
+  CURRENT_FORECAST_DATA: null,
 
   listWeatherLocations: [],
+  favouriteLocationsList: [],
   searchLocationValue: "",
+  removeLocationId: "",
 
   isShowCitiesDropdown: false,
   isShowAddContainer: false,
-
   isShowWarning: false,
   isShowAdditionalButtonsDropdown: false,
   isShowEditLocationListContainer: false,
-
-  removeLocationId: null,
   isConfirmRemove: false,
   isCanAddCount: true,
   isCanAddDuplicate: true,
-
-  favouriteLocationsList: [],
-
   isLocationView: false,
-
   isAddedToFavourites: false,
-
   isFahrenheit: false,
   isSingleDisplay: true,
-
   isLocationAddedToFavourites: false,
 
   weatherStatus: [
