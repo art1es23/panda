@@ -37,6 +37,7 @@ export default {
       const payload = {
         searchLocationValue: this.location,
         isShowCitiesDropdown,
+        isShowAdditionalButtonsDropdown: false,
       };
 
       this.handlerSetLocation(payload);

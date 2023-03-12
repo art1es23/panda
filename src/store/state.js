@@ -33,6 +33,8 @@ export default {
   isFahrenheit: false,
   isSingleDisplay: true,
 
+  isLocationAddedToFavourites: false,
+
   weatherStatus: [
     {
       title: "Clouds",

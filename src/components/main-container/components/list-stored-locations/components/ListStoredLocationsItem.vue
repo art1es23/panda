@@ -111,7 +111,7 @@ export default {
         searchLocationValue: location,
       };
 
-      console.log("s", location);
+      // console.log("s", location);
 
       // await this.GET_CURRENT_FORECAST_DATA();
       this.handlerSetLocation(payload);

@@ -56,7 +56,9 @@ export default {
           const dx = e.pageX - startX;
           scrollContent.scrollLeft = startScrollLeft - dx;
 
-          // console.log(dx);
+          console.log("dx: ", dx);
+          console.log("dx: ", startScrollLeft);
+          console.log("sc: ", scrollContent.scrollLeft);
         }
 
         function onMouseUp() {

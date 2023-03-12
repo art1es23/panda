@@ -15,9 +15,17 @@ export default {
   //   state.HOURLY_FORECAST_DATA = data;
   // },
 
-  setSearchLocation: (state, { searchLocationValue, isShowCitiesDropdown }) => {
+  setSearchLocation: (
+    state,
+    {
+      searchLocationValue,
+      isShowCitiesDropdown,
+      isShowAdditionalButtonsDropdown,
+    }
+  ) => {
     state.searchLocationValue = searchLocationValue;
     state.isShowCitiesDropdown = isShowCitiesDropdown;
+    state.isShowAdditionalButtonsDropdown = isShowAdditionalButtonsDropdown;
   },
 
   showAddLocationContainer: (
@@ -54,7 +62,10 @@ export default {
 
     if (list.length === 0) {
       list.push(currentLocationData);
-      if (listLocation === "favourite") state.isAddedToFavourites = true;
+      if (listLocation === "favourite") {
+        state.isLocationAddedToFavourites = true;
+        state.isAddedToFavourites = true;
+      }
     } else if (list.length > 0 && list.length < 5) {
       let isLocationExist = false;
 
@@ -66,7 +77,10 @@ export default {
 
       if (!isLocationExist) {
         list.push(currentLocationData);
-        if (listLocation === "favourite") state.isAddedToFavourites = true;
+        if (listLocation === "favourite") {
+          state.isLocationAddedToFavourites = true;
+          state.isAddedToFavourites = true;
+        }
       } else {
         state.isCanAddDuplicate = false;
         state.isShowWarning = true;
@@ -77,6 +91,11 @@ export default {
       state.isShowWarning = true;
     }
   },
+
+  // checkIfExist: (state, { isLocationAddedToFavourites }) => {
+  //   state.isLocationAddedToFavourites = isLocationAddedToFavourites;
+  // },
+
   closeWarningMessage: (state, { isShowWarning, isAddedToFavourites }) => {
     state.isShowWarning = isShowWarning;
     state.isAddedToFavourites = isAddedToFavourites;
