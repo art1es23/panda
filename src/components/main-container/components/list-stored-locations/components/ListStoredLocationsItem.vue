@@ -110,10 +110,6 @@ export default {
       const payload = {
         searchLocationValue: location,
       };
-
-      // console.log("s", location);
-
-      // await this.GET_CURRENT_FORECAST_DATA();
       this.handlerSetLocation(payload);
     },
   },

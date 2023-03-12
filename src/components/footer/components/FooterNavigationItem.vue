@@ -15,7 +15,6 @@ export default {
   props: {
     href: {
       type: String,
-      //   default: "/",
     },
     title: {
       type: String,

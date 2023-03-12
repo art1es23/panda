@@ -1,7 +1,6 @@
 <template>
-  <div class="location-container">
+  <div class="location-container" :class="[isSingle ? 'left' : '']">
     <action-buttons :currentLocationData="weatherData" />
-    <!-- {{ weatherData }} -->
 
     <h2 class="location-title">
       {{ isSingle ? "Forecast for Now" : "Forecast for 5 days" }}
@@ -32,12 +31,10 @@ import ActionButtons from "../action-buttons/ActionButtons.vue";
 import WarningMessage from "../warning-message/WarningMessage.vue";
 import LocationInfo from "./components/location-info/LocationInfo.vue";
 import LocationMonthWeatherGraph from "./components/location-month-weather/LocationMonthWeatherGraph.vue";
-// import LocationWeekWeatherGraph from "./components/location-week-weather/LocationWeekWeatherGraph.vue";
 export default {
   components: {
     ActionButtons,
     LocationInfo,
-    // LocationWeekWeatherGraph,
     LocationMonthWeatherGraph,
     WarningMessage,
     // TemperatureGraph,
@@ -46,8 +43,6 @@ export default {
   data() {
     return {
       isSingle: true,
-      // forecastData: [],
-      // weatherData: {},
     };
   },
 
@@ -56,8 +51,6 @@ export default {
       "CURRENT_WEATHER_DATA",
       "isAddedToFavourites",
       "isShowWarning",
-      "listWeatherLocations",
-      "searchLocationValue",
     ]),
     ...mapGetters(["GET_5_DAYS_FORECAST_DATA"]),
     location() {
@@ -93,7 +86,6 @@ export default {
     },
 
     reloadPage() {
-      // window.addEventListener()
       sessionStorage.setItem(
         "weatherData",
         JSON.stringify(this.CURRENT_WEATHER_DATA)
@@ -113,24 +105,11 @@ export default {
   mounted() {
     this.handlerLocation();
     this.getLocation();
-    // this.reloadPage();
-    // this.weatherData = JSON.parse(sessionStorage.getItem("weatherData"));
-    // this.forecastData = JSON.parse(sessionStorage.getItem("forecastData"));
-    // this.weatherData = this.CURRENT_WEATHER_DATA
-    //   ? JSON.parse(sessionStorage.getItem("weatherData"))
-    //   : this.CURRENT_WEATHER_DATA;
-    // this.forecastData = this.GET_5_DAYS_FORECAST_DATA
-    //   ? JSON.parse(sessionStorage.getItem("forecastData"))
-    //   : this.GET_5_DAYS_FORECAST_DATA;
   },
 
   updated() {
     this.reloadPage();
   },
-
-  // beforeDestroy() {
-  //   this.reloadPage();
-  // },
 };
 </script>
 

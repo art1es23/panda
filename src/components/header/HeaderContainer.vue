@@ -31,7 +31,7 @@ export default {
   },
 
   computed: {
-    ...mapState(["searchLocationValue", "isShowCitiesDropdown"]),
+    ...mapState(["isShowCitiesDropdown"]),
   },
 };
 </script>

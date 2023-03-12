@@ -20,7 +20,9 @@ export default {
   name: "ListStoredLocations",
 
   data() {
-    return {};
+    return {
+      // locationList: [],
+    };
   },
 
   computed: {
@@ -33,35 +35,34 @@ export default {
         : this.favouritesData;
     },
 
+    // favouritesData() {
+    //   return JSON.parse(localStorage.getItem("favourites"));
+    // },
+
     favouritesData() {
-      return this.getFavouriteLocations
-        ? this.getFavouriteLocations
-        : JSON.parse(localStorage.getItem("favouritesData"));
+      return JSON.parse(localStorage.getItem("favourites"));
     },
   },
 
-  // mounted () {
-  //   const savedFavourites = localStorage.getItem('favouritesData')
+  created() {
+    // if (this.$route.path === "/favourite-locations") {
+    //   this.locationList = this.favouritesData;
+    // } else {
+    //   this.locationList = this.GET_LOCATION_LIST;
+    // }
+    // this.locationList = this.$route.path === "/"
+    //     ? this.GET_LOCATION_LIST
+    //     : this.favouritesData;
+  },
 
-  //   if (savedFavourites) {
-  //     this.
-  //   }
-  // },
+  updated() {
+    // if (this.$route.path === "/favourite-locations")
+    //   this.locationList = this.favouritesData;
+  },
 
-  // watch: {
-  //   getFavouriteLocations () {
-  //     localStorage.setItem(
-  //     "favouritesData",
-  //     JSON.stringify(this.getFavouriteLocations)
-  //   );
-  //   }
-  // }
-  // updated() {
-  //   localStorage.setItem(
-  //     "favouritesData",
-  //     JSON.stringify(this.getFavouriteLocations)
-  //   );
-  // },
+  mounted() {
+    console.log(this.favouritesData);
+  },
 };
 </script>
 

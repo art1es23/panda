@@ -52,7 +52,7 @@ export default {
       "CURRENT_WEATHER_DATA",
       "isShowAddContainer",
       "isShowEditLocationListContainer",
-      // "getFavouriteLocations",
+      "getFavouriteLocations",
     ]),
   },
 
@@ -79,6 +79,7 @@ export default {
 
       this.changeStateAddContainer(payload);
     },
+
     handlerAddToList() {
       this.getLocation();
 
@@ -100,16 +101,6 @@ export default {
         isLocationAddedToFavourites: true,
         listLocation: "favourite",
       };
-
-      // if (
-      //   !localStorage.getItem("favouritesData") ||
-      //   localStorage.getItem("favouritesData") == undefined
-      // ) {
-      //   localStorage.setItem("favouritesData", this.currentLocationData);
-      // } else {
-      //   localStorage.getItem("favouritesData");
-      //   localStorage.setItem("favouritesData", this.getFavouriteLocations);
-      // }
 
       this.addLocation(payload);
     },

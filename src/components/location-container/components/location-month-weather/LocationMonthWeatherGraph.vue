@@ -4,14 +4,11 @@
       <icon-preloader />
     </div>
 
-    <!-- {{ forecastData }} -->
-
     <div
       class="location-month-tracklist day-month-wrapper"
       ref="scrollContent"
       :style="`grid-template-columns: repeat(${forecastData.length}, 1fr)`"
     >
-      <!-- :forecastData="forecastData" -->
       <swiper-cards
         class="day-month-wrapper"
         v-show="forecastData"
@@ -27,7 +24,7 @@
 import { mapState, mapGetters } from "vuex";
 import SwiperCards from "@/components/swiper-cards/SwiperCards.vue";
 import IconPreloader from "@/components/svg-icons/IconPreloader.vue";
-// import { mapGetters } from "vuex";
+
 export default {
   components: { SwiperCards, IconPreloader },
   name: "LocationMonthWeatherGraph",
@@ -45,9 +42,6 @@ export default {
         const startX = e.pageX;
         const scrollContent = this.$refs.scrollContent;
         const startScrollLeft = scrollContent.scrollLeft;
-        console.log(startX);
-        console.log(scrollContent);
-        console.log(startScrollLeft);
 
         document.addEventListener("mousemove", onMouseMove);
         document.addEventListener("mouseup", onMouseUp);
@@ -55,10 +49,6 @@ export default {
         function onMouseMove(e) {
           const dx = e.pageX - startX;
           scrollContent.scrollLeft = startScrollLeft - dx;
-
-          console.log("dx: ", dx);
-          console.log("dx: ", startScrollLeft);
-          console.log("sc: ", scrollContent.scrollLeft);
         }
 
         function onMouseUp() {

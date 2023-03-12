@@ -1,8 +1,6 @@
 <template>
   <div class="edit-location-list-container">
     <action-buttons />
-    <!-- <p>EDIT FORM LIST</p> -->
-
     <list-stored-locations />
   </div>
 </template>

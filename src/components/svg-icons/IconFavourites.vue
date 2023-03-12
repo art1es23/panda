@@ -5,7 +5,7 @@
     height="24px"
     viewBox="0 0 24 24"
     width="24px"
-    fill="#000000"
+    fill="#ffffff"
   >
     <path d="M0 0h24v24H0z" fill="none" />
     <path
@@ -19,7 +19,7 @@
     height="24px"
     viewBox="0 0 24 24"
     width="24px"
-    fill="#000000"
+    fill="#ffffff"
   >
     <path d="M0 0h24v24H0z" fill="none" />
     <path d="M0 0h24v24H0z" fill="none" />
@@ -30,7 +30,6 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
 export default {
   name: "IconFavourites",
 
@@ -39,16 +38,18 @@ export default {
   },
 
   computed: {
-    ...mapGetters(["getFavouriteLocations"]),
     checkIfExist() {
       let found = false;
-
-      for (let i = 0; i < this.getFavouriteLocations.length; i++) {
-        if (this.getFavouriteLocations[i].name === this.currentData.name) {
-          found = true;
-          break;
+      let favourites = JSON.parse(localStorage.getItem("favourites"));
+      if (favourites) {
+        for (let i = 0; i < favourites.length; i++) {
+          if (favourites[i].name === this.currentData.name) {
+            found = true;
+            break;
+          }
         }
       }
+
       return found;
     },
   },

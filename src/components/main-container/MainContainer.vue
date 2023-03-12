@@ -27,7 +27,6 @@ export default {
     ...mapState([
       "isShowAddContainer",
       "isShowWarning",
-      "CURRENT_WEATHER_DATA",
       "isShowEditLocationListContainer",
     ]),
   },
@@ -38,10 +37,6 @@ export default {
   mounted() {
     this.GET_CURRENT_POSITION_DATA();
   },
-
-  // updated() {
-  //   this.addLocation();
-  // },
 };
 </script>
 

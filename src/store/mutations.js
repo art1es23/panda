@@ -65,6 +65,8 @@ export default {
       if (listLocation === "favourite") {
         state.isLocationAddedToFavourites = true;
         state.isAddedToFavourites = true;
+
+        localStorage.setItem("favourites", JSON.stringify(list));
       }
     } else if (list.length > 0 && list.length < 5) {
       let isLocationExist = false;
@@ -80,6 +82,8 @@ export default {
         if (listLocation === "favourite") {
           state.isLocationAddedToFavourites = true;
           state.isAddedToFavourites = true;
+
+          localStorage.setItem("favourites", JSON.stringify(list));
         }
       } else {
         state.isCanAddDuplicate = false;
@@ -132,14 +136,23 @@ export default {
     state.isConfirmRemove = isConfirmRemove;
     state.isAddedToFavourites = false;
 
-    listLocation =
+    let list =
       listLocation === "favourite"
         ? "favouriteLocationsList"
         : "listWeatherLocations";
 
-    state[listLocation] = state[listLocation].filter(
+    console.log("removing");
+
+    let changedList = state[list].filter(
       (item) => item.id !== state.removeLocationId
     );
+
+    state[list] = changedList;
+
+    if (listLocation === "favourite") {
+      console.log("remove", changedList);
+      localStorage.setItem("favourites", JSON.stringify(changedList));
+    }
   },
 
   setLocation: (state, { location }) => {

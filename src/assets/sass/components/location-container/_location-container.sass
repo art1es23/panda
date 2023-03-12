@@ -1,3 +1,4 @@
+@import 'components/location-info'
 @import 'components/location-month-weather-graph'
 
 .location-container
@@ -10,6 +11,12 @@
     // height: 100%
     color: $white
 
+    // &.left
+    //     align-items: flex-start
+
+    //     & .location
+    //         width: auto
+
 .location
     display: flex
     flex-direction: column
@@ -18,28 +25,7 @@
     // align-items: center
     padding: 1rem 0
     // align-items: center
-    &-info
-        display: flex
-        margin: 0 auto
-        flex-direction: column
-        gap: 0.5rem
-        width: 60%
-        align-items: center
-        padding: 1.5rem
-        border-radius: 20px
-        background: linear-gradient(to right, #141e30, #243b55)
-        box-shadow: inset 2.5px 2.5px 5px 0 $white, inset -2.5px -2.5px 5px 0 $black 
 
-        &__title
-            font-size: 1.5rem
-
-        &__status
-            font-size: 0.825rem
-
-        &__temperature
-            display: flex
-            gap: 1.25rem
-            font-size: 0.825rem
 .button-handler-counts
     display: flex
     background-color: transparent

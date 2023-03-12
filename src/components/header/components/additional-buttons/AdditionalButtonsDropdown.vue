@@ -11,10 +11,6 @@
     <button class="button button-swap" @click="handlerDimension('f')">
       Farengeit
     </button>
-    <!-- <hr /> -->
-    <!-- <button class="button button-direction" @click="handlerDisplay">
-      Change Display
-    </button> -->
   </div>
 </template>
 
@@ -24,7 +20,7 @@ export default {
   name: "AdditionalButtonsDropdown",
 
   computed: {
-    ...mapState(["isShowEditLocationListContainer", "isSingleDisplay"]),
+    ...mapState(["isShowEditLocationListContainer"]),
   },
 
   methods: {
@@ -32,7 +28,6 @@ export default {
       "showEditLocationListContainer",
       "showAdditionalButtonsDropdown",
       "handlerTemperatureDimension",
-      "changeDisplaying",
     ]),
     handlerEditLocationList() {
       const payload = {
@@ -42,7 +37,6 @@ export default {
       };
 
       this.showEditLocationListContainer(payload);
-      // this.showAdditionalButtonsDropdown(payload);
     },
 
     onClose(e) {
@@ -68,14 +62,6 @@ export default {
 
       this.handlerTemperatureDimension(payload);
     },
-
-    // handlerDisplay() {
-    //   const payload = {
-    //     isSingleDisplay: !this.isSingleDisplay,
-    //   };
-
-    //   this.changeDisplaying(payload);
-    // },
   },
 
   directives: {
