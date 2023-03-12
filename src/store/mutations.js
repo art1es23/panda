@@ -2,6 +2,7 @@ export default {
   SET_CURRENT_POSITION: (state, { data }) => {
     state.CURRENT_WEATHER_DATA = data;
     state.listWeatherLocations.push(data);
+    state.searchLocationValue = data.name;
   },
   SET_CURRENT_WEATHER_DATA: (state, { data }) => {
     state.CURRENT_WEATHER_DATA = data;
@@ -10,10 +11,6 @@ export default {
   SET_CURRENT_FORECAST_DATA: (state, { data }) => {
     state.CURRENT_FORECAST_DATA = data;
   },
-
-  // SET_HOURLY_FORECAST_DATA: (state, { data }) => {
-  //   state.HOURLY_FORECAST_DATA = data;
-  // },
 
   setSearchLocation: (
     state,
@@ -95,10 +92,6 @@ export default {
       state.isShowWarning = true;
     }
   },
-
-  // checkIfExist: (state, { isLocationAddedToFavourites }) => {
-  //   state.isLocationAddedToFavourites = isLocationAddedToFavourites;
-  // },
 
   closeWarningMessage: (state, { isShowWarning, isAddedToFavourites }) => {
     state.isShowWarning = isShowWarning;

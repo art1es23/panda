@@ -35,29 +35,9 @@ export default {
         : this.favouritesData;
     },
 
-    // favouritesData() {
-    //   return JSON.parse(localStorage.getItem("favourites"));
-    // },
-
     favouritesData() {
       return JSON.parse(localStorage.getItem("favourites"));
     },
-  },
-
-  created() {
-    // if (this.$route.path === "/favourite-locations") {
-    //   this.locationList = this.favouritesData;
-    // } else {
-    //   this.locationList = this.GET_LOCATION_LIST;
-    // }
-    // this.locationList = this.$route.path === "/"
-    //     ? this.GET_LOCATION_LIST
-    //     : this.favouritesData;
-  },
-
-  updated() {
-    // if (this.$route.path === "/favourite-locations")
-    //   this.locationList = this.favouritesData;
   },
 
   mounted() {

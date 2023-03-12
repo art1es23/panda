@@ -36,6 +36,7 @@ export default {
 
   mounted() {
     this.GET_CURRENT_POSITION_DATA();
+    // this.GET_CURRENT_FORECAST_DATA();
   },
 };
 </script>

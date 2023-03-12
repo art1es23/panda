@@ -3,10 +3,10 @@
 import cities from "@/data/cities";
 
 export default {
-  CURRENT_WEATHER_DATA: null,
+  CURRENT_WEATHER_DATA: [],
   COUNTRY_NAMES_LIST: cities,
 
-  CURRENT_FORECAST_DATA: null,
+  CURRENT_FORECAST_DATA: [],
   // HOURLY_FORECAST_DATA: null,
 
   listWeatherLocations: [],
