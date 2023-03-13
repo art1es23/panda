@@ -22,7 +22,7 @@
       </button>
     </div>
 
-    <temperature-graph :forecastData="forecastData" />
+    <temperature-graph :forecastData="forecastData" v-if="!isSingle" />
 
     <warning-message v-if="isAddedToFavourites || isShowWarning" />
   </div>
